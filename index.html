@@ -1,22 +1,26 @@
 <html>
   <head>
     <title>Benjamin Harding</title>
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="vendor/reset.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" href="vendor/icons.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   </head>
   <body>
+    <header>
+      <h1>Portfolio</h1>
+    </header>
+    <nav>
+      <a class="tab" data-content="articles" href="#"><span class="icon-home">Projects</a>
+      <a class="tab" data-content="about" href="#"><span class="icon-rocket">About</a>
+      <a href="https://github.com/bharding2" target="_blank"><span class="icon-github"></span>GitHub</a>
+      <a href="https://twitter.com/FcSlothbear"target="_blank"><span class="icon-twitter3">Twitter</a>
+    </nav>
     <main>
-      <header>
-        <h1>Portfolio</h1>
-      </header>
-      <nav>
-        <a href="">Projects</a>
-        <a href="">About</a>
-        <a href="https://github.com/bharding2">GitHub</a>
-        <a href="https://twitter.com/FcSlothbear">Twitter</a>
-      </nav>
-      <section id="projects">
+      <section id="projects" class="tab_content">
+        <select id="category_filter">
+          <option value="">-- Filter by Categories --</option>
+        </select>
         <article class="template" data-category="cat">
           <header>
             <h2>Project Title</h2>
@@ -25,14 +29,27 @@
               <p>published <time pubdate datetime="2000-01-01">publish time</time></p>
             </div>
           </header>
-          <section class="projectBody"></section>
+          <section class="project_body"></section>
+          <a href="#" class="read_on">Read on &rarr;</a>
         </article>
       </section>
+      <section id="about" class="tab_content">
+        <header>
+          Welcome to my Portfolio
+        </header>
+        <section>
+          <h1>Some of my intrests:</h1>
+          <ul>
+            <li>Coding</li>
+            <li>Sharing what I've learned</li>
+            <li>Hanging with my wife</li>
+          </ul>
+        </section>
+    </main>
       <footer>
         &copy; 2016
       </footer>
-    </main>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script src="vendor/jquery-1.12.0.js"></script>
     <script src="scripts/projectdata.js"></script>
     <script src="scripts/portfolio.js"></script>
   </body>

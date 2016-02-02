@@ -16,7 +16,7 @@ Project.prototype.toHtml = function() {
   $newProject.find('h2').text(this.title);
   $newProject.find('address a').attr('href', this.repoUrl);
   $newProject.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
-  $newProject.find('.projectBody').html(this.body);
+  $newProject.find('.project_body').html(this.body);
 
   $newProject.append('<hr>');
 
