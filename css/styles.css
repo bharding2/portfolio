@@ -1,4 +1,62 @@
 main {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+nav {
+  margin: 2% 0 2% 0;
+  padding: 1% 0 1% 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  width: 20%;
+  background-color: black;
+  color: white;
+  font-size: 3vw;
+}
+
+header h1{
+  display: flex;
+  justify-content: center;
+  font-size: 6vw;
+}
+
+article h2 {
+  font-size: 200%;
+  margin: 2%;
+}
+
+article a {
+  margin: 2%;
+}
+
+article p {
+  margin: 0 2% 0 2%;
+}
+
+.byline {
+  margin: 2%
+}
+
+.projectBody {
+  margin: 2%;
+}
+
+hr {
+  width: 80%;
+  border-style: solid;
+  background-color: black;
+  height: 1px;
+}
+
+footer {
+  margin: 2%;
+  align-self: flex-end;
 }
