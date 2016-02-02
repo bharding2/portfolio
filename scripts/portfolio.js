@@ -18,10 +18,16 @@ Project.prototype.toHtml = function() {
   $newProject.find('time').html('about ' + parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000) + ' days ago');
   $newProject.find('.projectBody').html(this.body);
 
+  $newProject.append('<hr>');
+
   $newProject.removeClass();
 
   return $newProject;
 };
+
+projectData.sort(function(a, b) {
+  return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+});
 
 projectData.forEach(function(newProj) {
   projects.push(new Project(newProj));
@@ -30,3 +36,5 @@ projectData.forEach(function(newProj) {
 projects.forEach(function (project) {
   $('#projects').append(project.toHtml());
 });
+
+$('.template').hide();
