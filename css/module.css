@@ -1,0 +1,42 @@
+nav {
+  margin: 2% 0 2% 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  padding: 0.5% 0 0.5% 0;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  width: 20%;
+  background-color: #4B6F8B;
+  color: #D3DEE7;
+  font-size: 3vw;
+}
+
+nav a:hover{
+  background-color: #4C9475;
+}
+
+article h2 {
+  font-size: 200%;
+  margin: 2%;
+}
+
+article a {
+  margin: 2%;
+  color: #AEAED1;
+}
+
+article p {
+  margin: 0 2% 0 2%;
+}
+
+.byline {
+  margin: 2%
+}
+
+.project_body {
+  margin: 2%;
+}
