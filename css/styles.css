@@ -3,6 +3,8 @@ body {
   flex-direction: column;
   align-items: stretch;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  background-color: #042037;
+  color: #D3DEE7;
 }
 
 nav {
@@ -17,9 +19,13 @@ nav a {
   justify-content: center;
   text-decoration: none;
   width: 20%;
-  background-color: black;
-  color: white;
+  background-color: #4B6F8B;
+  color: #D3DEE7;
   font-size: 3vw;
+}
+
+nav a:hover{
+  background-color: #4C9475;
 }
 
 header h1{
@@ -35,6 +41,7 @@ article h2 {
 
 article a {
   margin: 2%;
+  color: #AEAED1;
 }
 
 article p {
@@ -52,7 +59,7 @@ article p {
 hr {
   width: 80%;
   border-style: solid;
-  background-color: black;
+  background-color: #4B6F8B;
   height: 1px;
 }
 
