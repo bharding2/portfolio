@@ -1,22 +1,40 @@
 nav {
   margin: 2% 0 2% 0;
-  display: flex;
-  justify-content: space-around;
 }
 
 nav a {
-  padding: 0.5% 0 0.5% 0;
   display: flex;
   justify-content: center;
   text-decoration: none;
   width: 20%;
-  background-color: #4B6F8B;
   color: #D3DEE7;
-  font-size: 3vw;
+  font-size: 6vw;
 }
 
-nav a:hover{
+nav ul {
+  background-color: #4B6F8B;
+  display: none;
+  padding: 0;
+  list-style: none;
+  clear: both;
+}
+
+nav:hover ul {
+  display: block;
+  padding: 0 7% 0 7%;
+}
+
+nav li {
+  display: inline;
+}
+
+nav li:hover{
   background-color: #4C9475;
+}
+
+.icon-menu {
+  float: left;
+  font-size: 6vw;
 }
 
 article h2 {
@@ -39,4 +57,24 @@ article p {
 
 .project_body {
   margin: 2%;
+}
+
+@media only screen and (min-width: 640px) {
+  .icon-menu {
+    display: none;
+  }
+
+  nav ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 7% 0 7%;
+  }
+
+  nav:hover ul {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  nav a {
+    font-size: 3vw;
 }
