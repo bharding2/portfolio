@@ -1,7 +1,7 @@
 var projectData = [
   {
     title:        'Hoppr',
-    category:     '201d5',
+    category:     '201d5final',
     repoUrl:      'https://github.com/bharding2/hoppr',
     publishedOn:  '2016-01-29',
     body:         '<p>1 Here is info about Hoppr</p><p>2 Here is info about Hoppr</p><p>3 Here is info about Hoppr</p>'

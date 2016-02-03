@@ -22,6 +22,33 @@ portfolioView.setTeasers = function() {
   });
 };
 
+portfolioView.populateFilters = function() {
+  $('article').each(function() {
+    if (!$(this).hasClass('template')) {
+      val = $(this).attr('data-category');
+      optionTag = '<option value="' + val + '">' + val + '</option>';
+      if ($('#category_filter option[value="' + val + '"]').length === 0) {
+        $('#category_filter').append(optionTag);
+      }
+    }
+  });
+};
+
+portfolioView.handleCategoryFilter = function() {
+  $('#category_filter').on('change', function() {
+    if ($(this).val()) {
+      var $val = $(this).val();
+      $('article').hide();
+      $('article[data-category="' + $val + '"]').fadeIn();
+    } else {
+      $('article').show();
+      $('.template').hide();
+    }
+  });
+};
+
 $();
 portfolioView.handleNav();
 portfolioView.setTeasers();
+portfolioView.populateFilters();
+portfolioView.handleCategoryFilter();
