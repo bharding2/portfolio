@@ -1,7 +1,7 @@
 #projects select{
   width: 85%;
   margin: 0.5% 5% 0 10%;
-  font-size: 1.25em;
+  font-size: 1.333em;
 }
 
 article {
@@ -9,12 +9,12 @@ article {
 }
 
 article h2 {
-  font-size: 2em;
+  font-size: 2.369em;
   margin: 2%;
 }
 
 article h3 {
-  font-size: 1.5em;
+  font-size: 1.777em;
   margin: 2%;
 }
 
@@ -24,6 +24,7 @@ article ul {
 
 article li {
   margin: 0 2% 0 2%;
+  font-family: 'Alegrya', serif;
 }
 
 article a {
@@ -33,4 +34,5 @@ article a {
 
 article p {
   margin: 0 2% 0 2%;
+  font-family: 'Alegrya', serif;
 }
