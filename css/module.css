@@ -4,11 +4,11 @@ nav {
 
 nav a {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   text-decoration: none;
   width: 20%;
   color: #D3DEE7;
-  font-size: 6vw;
+  font-size: 2em;
 }
 
 nav ul {
@@ -16,16 +16,16 @@ nav ul {
   display: none;
   padding: 0;
   list-style: none;
-  clear: both;
 }
 
 nav:hover ul {
   display: block;
-  padding: 0 7% 0 7%;
+  padding: 0 7% 0 15%;
 }
 
 nav li {
   display: inline;
+  padding: 3% 0 3% 0;
 }
 
 nav li:hover{
@@ -33,22 +33,10 @@ nav li:hover{
 }
 
 .icon-menu {
-  float: left;
-  font-size: 6vw;
-}
-
-article h2 {
-  font-size: 200%;
-  margin: 2%;
-}
-
-article a {
-  margin: 2%;
-  color: #AEAED1;
-}
-
-article p {
-  margin: 0 2% 0 2%;
+  position: absolute;
+  top: 1.75em;
+  left: 0.5%;
+  font-size: 2em;
 }
 
 .byline {
@@ -73,8 +61,15 @@ article p {
   nav:hover ul {
     display: flex;
     justify-content: space-around;
+    padding: 0 7% 0 7%;
   }
 
   nav a {
-    font-size: 3vw;
+    font-size: 1.5em;
+  }
+
+  #projects select{
+    width: 90%;
+    margin: 0 5% 0 5%;
+  }
 }

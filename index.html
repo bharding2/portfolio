@@ -12,45 +12,43 @@
   <body>
     <header>
       <h1>Portfolio</h1>
+      <nav>
+        <span class="icon-menu"></span>
+        <ul>
+          <a class="tab" data-content="projects" href="#"><li class="icon-home">Projects</li></a>
+          <a class="tab" data-content="about" href="#"><li class="icon-rocket">About</li></a>
+          <a href="https://github.com/bharding2" target="_blank"><li class="icon-github">GitHub</li></a>
+          <a href="https://twitter.com/FcSlothbear" target="_blank"><li class="icon-twitter3">Twitter</li></a>
+        </ul>
+      </nav>
     </header>
-    <nav>
-      <span class="icon-menu"></span>
-      <ul>
-        <a class="tab" data-content="projects" href="#"><li class="icon-home">Projects</li></a>
-        <a class="tab" data-content="about" href="#"><li class="icon-rocket">About</li></a>
-        <a href="https://github.com/bharding2" target="_blank"><li class="icon-github">GitHub</li></a>
-        <a href="https://twitter.com/FcSlothbear" target="_blank"><li class="icon-twitter3">Twitter</li></a>
-      </ul>
-    </nav>
     <main>
       <section id="projects" class="tab_content">
         <select id="category_filter">
           <option value="">-- Filter by Categories --</option>
         </select>
         <article class="template" data-category="cat">
-          <header>
-            <h2>Project Title</h2>
-            <div class="byline">
-              <address><a href="">GitHub</a></address>
-              <p>published <time pubdate datetime="2000-01-01">publish time</time></p>
-            </div>
-          </header>
+          <h2>Project Title</h2>
+          <div class="byline">
+            <address><a href="">GitHub</a></address>
+            <p>published <time pubdate datetime="2000-01-01">publish time</time></p>
+          </div>
           <section class="project_body"></section>
           <a href="#" class="read_on">Read on &rarr;</a>
         </article>
       </section>
       <section id="about" class="tab_content">
-        <header>
-          Welcome to my Portfolio
-        </header>
-        <section>
-          <h2>Some of my interests:</h2>
-          <ul>
-            <li>Coding</li>
-            <li>Sharing what I've learned</li>
-            <li>Hanging with my wife</li>
-          </ul>
-        </section>
+        <article>
+          <h2>Welcome to my Portfolio</h2>
+          <section>
+            <h3>Some of my interests:</h3>
+            <ul>
+              <li>Coding</li>
+              <li>Sharing what I've learned</li>
+              <li>Hanging with my wife</li>
+            </ul>
+          </section>
+        </article>
     </main>
       <footer>
         &copy; 2016
