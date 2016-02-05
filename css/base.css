@@ -11,17 +11,14 @@ body {
   color: #D3DEE7;
 }
 
+header {
+  position: relative;
+}
+
 h1{
   display: flex;
   justify-content: center;
-  font-size: 6vw;
-}
-
-hr {
-  width: 80%;
-  border-style: solid;
-  background-color: #4B6F8B;
-  height: 1px;
+  font-size: 3.157em;
 }
 
 footer {
