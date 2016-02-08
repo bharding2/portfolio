@@ -41,9 +41,13 @@ portfolioView.handleCategoryFilter = function() {
   });
 };
 
-$(document).ready(function () {
+portfolioView.initIndexPage = function() {
+  Project.all.forEach(function (project) {
+    $('#projects').append(project.toHtml());
+  });
+
   portfolioView.handleNav();
   portfolioView.setTeasers();
   portfolioView.populateFilters();
   portfolioView.handleCategoryFilter();
-});
+};

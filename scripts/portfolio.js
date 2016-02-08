@@ -1,5 +1,3 @@
-var projects = [];
-
 function Project(newProj) {
   this.title = newProj.title;
   this.category = newProj.category;
@@ -7,6 +5,8 @@ function Project(newProj) {
   this.publishedOn = newProj.publishedOn;
   this.body = newProj.body;
 };
+
+Project.all = [];
 
 Project.prototype.toHtml = function() {
   var template = Handlebars.compile($('#project-template').text());
@@ -17,14 +17,42 @@ Project.prototype.toHtml = function() {
   return template(this);
 };
 
-projectData.sort(function(a, b) {
-  return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
-});
+Project.loadAll = function(projectData) {
+  projectData.sort(function(a, b) {
+    return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+  });
 
-projectData.forEach(function(newProj) {
-  projects.push(new Project(newProj));
-});
+  projectData.forEach(function(newProj) {
+    Project.all.push(new Project(newProj));
+  });
+};
 
-projects.forEach(function (project) {
-  $('#projects').append(project.toHtml());
-});
+Project.fetchAll = function() {
+  if (localStorage.projectData) {
+    $.ajax({
+      type:'HEAD',
+      url:'data/projectdata.json',
+      success: function(data, message, xhr){
+        console.log(xhr);
+        var eTag = xhr.getResponseHeader('eTag');
+        if(!localStorage.eTag || eTag !== localStorage.eTag){
+          localStorage.eTag = eTag;
+          $.getJSON('data/projectdata.json', function(data){
+            Project.loadAll(data);
+            localStorage.setItem('projectData', JSON.stringify(Project.all));
+            portfolioView.initIndexPage();
+          });
+        } else {
+          Project.loadAll(JSON.parse(localStorage.getItem('projectData')));
+          portfolioView.initIndexPage();
+        }
+      }
+    });
+  } else {
+    $.getJSON('data/projectdata.json', function(data){
+      Project.loadAll(data);
+      localStorage.setItem('projectData', JSON.stringify(Project.all));
+      portfolioView.initIndexPage();
+    });
+  }
+};
