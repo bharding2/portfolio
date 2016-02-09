@@ -11,6 +11,8 @@ body {
   color: #D3DEE7;
 }
 
+/*header stylings*/
+
 header {
   position: relative;
 }
@@ -20,6 +22,8 @@ h1{
   justify-content: center;
   font-size: 3.157em;
 }
+
+/*footer styles*/
 
 footer {
   margin: 2%;

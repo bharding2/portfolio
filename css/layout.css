@@ -8,6 +8,8 @@ article {
   padding: 2%;
 }
 
+/*text styles*/
+
 article h2 {
   font-size: 2.369em;
   margin: 2%;
@@ -18,6 +20,18 @@ article h3 {
   margin: 2%;
 }
 
+article a {
+  margin: 2%;
+  color: #AEAED1;
+}
+
+article p {
+  margin: 0 2% 0 2%;
+  font-family: 'Alegrya', serif;
+}
+
+/*list styles*/
+
 article ul {
   margin: 2%;
 }
@@ -27,12 +41,30 @@ article li {
   font-family: 'Alegrya', serif;
 }
 
-article a {
-  margin: 2%;
-  color: #AEAED1;
+/*form styles*/
+
+label {
+  font-size: 1.333em;
 }
 
-article p {
-  margin: 0 2% 0 2%;
-  font-family: 'Alegrya', serif;
+label p {
+  margin: 2%;
+}
+
+input {
+  width: 50%;
+  margin: 2%;
+  border: 1px solid #AEAED1;
+}
+
+textarea {
+  width: 50%;
+  margin: 2%;
+  border: 1px solid #AEAED1;
+}
+
+input[type="checkbox"] {
+  width: .28em;
+  height: .28em;
+  font-size: 3em;
 }

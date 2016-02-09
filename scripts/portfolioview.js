@@ -41,6 +41,38 @@ portfolioView.handleCategoryFilter = function() {
   });
 };
 
+portfolioView.initNewProjectPage = function() {
+  $('.tab-content').show();
+  $('#export-field').hide();
+  $('#project-json').on('focus', function(){
+    this.select();
+  });
+
+  $('#new-form').on('change', 'input, textarea', portfolioView.create);
+};
+
+portfolioView.create = function() {
+  var project;
+  $('#projects').empty();
+
+  project = new Project({
+    title: $('#project-title').val(),
+    repoUrl: $('#project-url').val(),
+    category: $('#project-category').val(),
+    body: $('#project-body').val(),
+    publishedOn: $('#project-published:checked').length ? new Date() : null
+  });
+
+  $('#projects').append(project.toHtml());
+
+  $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
+  $('#export-field').show();
+  $('#project-json').val(JSON.stringify(project) + ',');
+};
+
 portfolioView.initIndexPage = function() {
   Project.all.forEach(function (project) {
     $('#projects').append(project.toHtml());

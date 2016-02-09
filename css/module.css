@@ -1,3 +1,5 @@
+/*nav styles*/
+
 nav {
   margin: 2% 0 2% 0;
 }
@@ -39,6 +41,8 @@ nav li:hover{
   font-size: 2em;
 }
 
+/*byline styles*/
+
 .byline {
   margin: 2%;
 }
@@ -46,6 +50,8 @@ nav li:hover{
 .project-body {
   margin: 2%;
 }
+
+/*media querys*/
 
 @media only screen and (min-width: 640px) {
   .icon-menu {

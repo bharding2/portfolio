@@ -23,47 +23,46 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
-
   </head>
   <body>
-    <header>
-      <h1>Portfolio</h1>
-      <nav>
-        <span class="icon-menu"></span>
-        <ul>
-          <a class="tab" data-content="projects" href="#"><li class="icon-home">Projects</li></a>
-          <a class="tab" data-content="about" href="#"><li class="icon-rocket">About</li></a>
-          <a href="https://github.com/bharding2" target="_blank"><li class="icon-github">GitHub</li></a>
-          <a href="https://twitter.com/FcSlothbear" target="_blank"><li class="icon-twitter3">Twitter</li></a>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="projects" class="tab-content">
-        <select id="category-filter">
-          <option value="">-- Filter by Categories --</option>
-        </select>
-      </section>
-      <section id="about" class="tab-content">
-        <h2>Welcome to my Portfolio</h2>
-        <section>
-          <h3>Some of my interests:</h3>
-          <ul>
-            <li>Coding</li>
-            <li>Sharing what I've learned</li>
-            <li>Hanging with my wife</li>
-          </ul>
-        </section>
-    </main>
+    <section id="write" class="tab-content">
+      <h1>New Article</h1>
+      <form action="#" id="new-form">
+        <label>
+          <input type="text" id="project-title" placeholder="Project title" required>
+        </label>
+        <textarea id="project-body" rows="8" cols="40" placeholder="Project body" required></textarea>
+        <label>
+          <input type="text" id="project-url" placeholder="Project URL" required>
+        </label>
+        <label>
+          <input type="text" id="project-category" placeholder="Category" required>
+        </label>
+        <label>
+          <input type="checkbox" id="project-published"> Published
+        </label>
+      </form>
+    </section>
+    <section id="projects" class="tab-content">
+
+    </section>
+    <section id="project-export">
+      <label id="export-field" for="project-json">
+        <input type="text" readonly id="project-json">
+        <p>When finalized, copy the above JSON, and paste into projectdata.json</p>
+      </label>
+    </section>
     <footer>
       <p>&copy; 2016</p>
     </footer>
     <script src="vendor/jquery-1.12.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="vendor/marked.js"></script>
+    <script src="vendor/highlight.pack.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="scripts/portfolioview.js"></script>
-    <script type="text/javascript">
-      Project.fetchAll();
+    <script>
+      portfolioView.initNewProjectPage();
     </script>
   </body>
 </html>
