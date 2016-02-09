@@ -26,3 +26,4 @@
 * Transferred data to json files
 * Implemented data access using ajax and json, initialized local storage
 * Upon reload, check data against local storage.  If changed, use json and push new data to local storage.  If the same, use data from local storage.
+* Built new.html to create new project json from form inputs
