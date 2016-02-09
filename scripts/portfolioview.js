@@ -1,85 +1,90 @@
-var portfolioView = {};
+(function(module) {
 
-portfolioView.handleNav = function () {
-  $('nav').on('click', '.tab', function (event) {
-    $('.tab-content').hide();
-    $('#' + $(this).data('content')).show();
-  });
+  var portfolioView = {};
 
-  $('nav .tab:first').click();
-};
+  portfolioView.handleNav = function () {
+    $('nav').on('click', '.tab', function (event) {
+      $('.tab-content').hide();
+      $('#' + $(this).data('content')).show();
+    });
 
-portfolioView.setTeasers = function() {
-  $('.project-body *:nth-of-type(n+2)').hide();
+    $('nav .tab:first').click();
+  };
 
-  $('#projects').on('click', 'a.read-on', function(event) {
-    event.preventDefault();
-    $(this).prev().children().show();
-    $(this).hide();
-  });
-};
+  portfolioView.setTeasers = function() {
+    $('.project-body *:nth-of-type(n+2)').hide();
 
-portfolioView.populateFilters = function() {
-  $('article').each(function() {
-    var $val = $(this).attr('data-category');
-    var optionTag = '<option value="' + $val + '">' + $val + '</option>';
+    $('#projects').on('click', 'a.read-on', function(event) {
+      event.preventDefault();
+      $(this).prev().children().show();
+      $(this).hide();
+    });
+  };
 
-    if ($('#category-filter option[value="' + $val + '"]').length === 0) {
-      $('#category-filter').append(optionTag);
-    }
-  });
-};
+  portfolioView.populateFilters = function() {
+    $('article').each(function() {
+      var $val = $(this).attr('data-category');
+      var optionTag = '<option value="' + $val + '">' + $val + '</option>';
 
-portfolioView.handleCategoryFilter = function() {
-  $('#category-filter').on('change', function() {
-    if ($(this).val()) {
-      $('article').hide();
-      $('article[data-category="' + $(this).val() + '"]').fadeIn();
-    } else {
-      $('article').show();
-    }
-  });
-};
+      if ($('#category-filter option[value="' + $val + '"]').length === 0) {
+        $('#category-filter').append(optionTag);
+      }
+    });
+  };
 
-portfolioView.initNewProjectPage = function() {
-  $('.tab-content').show();
-  $('#export-field').hide();
-  $('#project-json').on('focus', function(){
-    this.select();
-  });
+  portfolioView.handleCategoryFilter = function() {
+    $('#category-filter').on('change', function() {
+      if ($(this).val()) {
+        $('article').hide();
+        $('article[data-category="' + $(this).val() + '"]').fadeIn();
+      } else {
+        $('article').show();
+      }
+    });
+  };
 
-  $('#new-form').on('change', 'input, textarea', portfolioView.create);
-};
+  portfolioView.initNewProjectPage = function() {
+    $('.tab-content').show();
+    $('#export-field').hide();
+    $('#project-json').on('focus', function(){
+      this.select();
+    });
 
-portfolioView.create = function() {
-  var project;
-  $('#projects').empty();
+    $('#new-form').on('change', 'input, textarea', portfolioView.create);
+  };
 
-  project = new Project({
-    title: $('#project-title').val(),
-    repoUrl: $('#project-url').val(),
-    category: $('#project-category').val(),
-    body: $('#project-body').val(),
-    publishedOn: $('#project-published:checked').length ? new Date() : null
-  });
+  portfolioView.create = function() {
+    var project;
+    $('#projects').empty();
 
-  $('#projects').append(project.toHtml());
+    project = new Project({
+      title: $('#project-title').val(),
+      repoUrl: $('#project-url').val(),
+      category: $('#project-category').val(),
+      body: $('#project-body').val(),
+      publishedOn: $('#project-published:checked').length ? new Date() : null
+    });
 
-  $('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
-
-  $('#export-field').show();
-  $('#project-json').val(JSON.stringify(project) + ',');
-};
-
-portfolioView.initIndexPage = function() {
-  Project.all.forEach(function (project) {
     $('#projects').append(project.toHtml());
-  });
 
-  portfolioView.handleNav();
-  portfolioView.setTeasers();
-  portfolioView.populateFilters();
-  portfolioView.handleCategoryFilter();
-};
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
+
+    $('#export-field').show();
+    $('#project-json').val(JSON.stringify(project) + ',');
+  };
+
+  portfolioView.initIndexPage = function() {
+    Project.all.forEach(function (project) {
+      $('#projects').append(project.toHtml());
+    });
+
+    portfolioView.handleNav();
+    portfolioView.setTeasers();
+    portfolioView.populateFilters();
+    portfolioView.handleCategoryFilter();
+  };
+
+  module.portfolioView = portfolioView;
+}(window));
