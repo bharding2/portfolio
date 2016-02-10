@@ -66,9 +66,12 @@
     </footer>
     <script src="vendor/jquery-1.12.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="vendor/html5sql.js"></script>
+    <script src="vendor/webdb.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="scripts/portfolioview.js"></script>
     <script type="text/javascript">
+      Project.createTable();
       Project.fetchAll(portfolioView.initIndexPage);
     </script>
   </body>
