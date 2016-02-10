@@ -24,6 +24,10 @@
       </article>
     </script>
 
+    <script id="stats-template" type="text/x-handlebars-template">
+      <li><strong>{{category}}</strong>: {{numWords}} words written.  {{percentWords}}% of total.</li>
+    </script>
+
   </head>
   <body>
     <header>
@@ -57,6 +61,8 @@
     </main>
     <footer>
       <p>&copy; 2016</p>
+      <ul class="category-stats">
+      </ul>
     </footer>
     <script src="vendor/jquery-1.12.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>

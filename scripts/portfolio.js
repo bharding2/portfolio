@@ -60,5 +60,52 @@
     });
   };
 
+  Project.numWordsAll = function() {
+    return Project.all.map(function(project) {
+      return project.body.match(/\b\w+/g).length;
+    })
+    .reduce(function(a, b) {
+      return a + b;
+    });
+  };
+
+  Project.allCategories = function() {
+    return Project.all.map(function(project) {
+      return project.category;
+    })
+    .reduce(function(cats, cat) {
+      if (cats.indexOf(cat) < 0) {
+        cats.push(cat);
+      }
+      return cats;
+    },[]);
+  };
+
+  Project.numWordsByCategory = function() {
+    return Project.allCategories().map(function(cat) {
+      return {
+        category: cat,
+        numWords: Project.all.filter(function(project) {
+          return project.category === cat;
+        })
+        .map(function(project) {
+          return project.body.match(/\b\w+/g).length;
+        })
+        .reduce(function(a, b) {
+          return a + b;
+        }),
+        percentWords: parseInt((Project.all.filter(function(project) {
+          return project.category === cat;
+        })
+        .map(function(project) {
+          return project.body.match(/\b\w+/g).length;
+        })
+        .reduce(function(a, b) {
+          return a + b;
+        }) / Project.numWordsAll() ) * 100)
+      };
+    });
+  };
+
   module.Project = Project;
 }(window));

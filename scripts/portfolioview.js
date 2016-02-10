@@ -75,6 +75,14 @@
     $('#project-json').val(JSON.stringify(project) + ',');
   };
 
+  portfolioView.initStats = function () {
+    var template = Handlebars.compile($('#stats-template').text());
+
+    Project.numWordsByCategory().forEach(function(stat) {
+      $('.category-stats').append(template(stat));
+    });
+  };
+
   portfolioView.initIndexPage = function() {
     Project.all.forEach(function (project) {
       $('#projects').append(project.toHtml());
@@ -84,6 +92,7 @@
     portfolioView.setTeasers();
     portfolioView.populateFilters();
     portfolioView.handleCategoryFilter();
+    portfolioView.initStats();
   };
 
   module.portfolioView = portfolioView;
