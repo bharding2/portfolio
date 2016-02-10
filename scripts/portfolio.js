@@ -1,11 +1,9 @@
 (function(module) {
 
   function Project(newProj) {
-    this.title = newProj.title;
-    this.category = newProj.category;
-    this.repoUrl = newProj.repoUrl;
-    this.publishedOn = newProj.publishedOn;
-    this.body = newProj.body;
+    Object.keys(newProj).forEach(function(e, index, keys) {
+      this[e] = newProj[e];
+    },this);
   };
 
   Project.all = [];
@@ -19,44 +17,155 @@
     return template(this);
   };
 
-  Project.loadAll = function(projectData) {
-    projectData.sort(function(a, b) {
-      return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
-    });
+  Project.createTable = function(callback) {
+    webDB.execute(
+      'CREATE TABLE IF NOT EXISTS projects (' +
+        'id INTEGER PRIMARY KEY, ' +
+        'title VARCHAR(255) NOT NULL,' +
+        'category VARCHAR(255) NOT NULL,' +
+        'repoUrl VARCHAR(1000) NOT NULL,' +
+        'publishedOn DATE NOT NULL,' +
+        'body VARCHAR(100000) NOT NULL' +
+      ');',
+      function(result) {
+        console.log('Successfully set up the articles table.', result);
+        if (callback) {
+          callback();
+        }
+      }
+    );
+  };
 
-    Project.all = projectData.map(function(ele) {
+  Project.truncateTable = function(callback) {
+    webDB.execute(
+      'DELETE FROM projects;',
+      function(result) {
+        if (callback) {
+          callback();
+        }
+      }
+    );
+  };
+
+  Project.prototype.insertRecord = function(callback) {
+    webDB.execute(
+      [
+        {
+          'sql': 'INSERT INTO projects (title, category, repoUrl, publishedOn, body) VALUES (?, ?, ?, ?, ?);',
+          'data': [this.title, this.category, this.repoUrl, this.publishedOn, this.body]
+        }
+      ],
+      function(result) {
+        if (callback) {
+          callback();
+        }
+      }
+    );
+  };
+
+  Project.prototype.deleteRecord = function(callback) {
+    webDB.execute(
+      [
+        {
+          'sql': 'DELETE FROM articles WHERE title = ?',
+          'data': [this.title]
+        }
+      ],
+      function(result) {
+        if (callback) {
+          callback();
+        }
+      }
+    );
+  };
+
+  // this.title = newProj.title;
+  // this.category = newProj.category;
+  // this.repoUrl = newProj.repoUrl;
+  // this.publishedOn = newProj.publishedOn;
+  // this.body = newProj.body;
+  Project.prototype.updateRecord = function(callback) {
+    webDB.execute(
+      [
+        {
+          'sql': 'UPDATE articles SET title = ?, category = ?, repoUrl = ?, publishedOn = ?, body = ?;',
+          'data': [this.title, this.category, this.repoUrl, this.publishedOn, this.body]
+        }
+      ],
+      function(result) {
+        if (callback) {
+          callback();
+        }
+      }
+    );
+  };
+
+  Project.loadAll = function(rows) {
+    // rows.sort(function(a, b) {
+    //   return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
+    // });
+
+    Project.all = rows.map(function(ele) {
       return new Project(ele);
     });
   };
 
   Project.fetchAll = function(viewF) {
-    if (localStorage.projectData) {
-      $.ajax({
-        type: 'HEAD',
-        url: 'data/projectdata.json',
-        success: function(data, message, xhr){
-          console.log(xhr);
-          var eTag = xhr.getResponseHeader('eTag');
-          if(!localStorage.eTag || eTag !== localStorage.eTag){
-            localStorage.eTag = eTag;
-            Project.getAll();
+    webDB.execute('SELECT * FROM projects ORDER BY publishedOn DESC', function(rows) {
+      // if (rows.length) {
+      //   $.ajax({
+      //     type: 'HEAD',
+      //     url: 'data/projectdata.json',
+      //     success: function(data, message, xhr){
+      //       console.log(xhr);
+      //       var eTag = xhr.getResponseHeader('eTag');
+      //       if(!localStorage.eTag || eTag !== localStorage.eTag){
+      //         localStorage.eTag = eTag;
+      //         Project.getAll();
+      //         viewF();
+      //       } else {
+      //         Project.loadAll(rows);
+      //         viewF();
+      //       }
+      //     }
+      //   });
+      // } else {
+      //   Project.getAll();
+      //   viewF();
+      // }
+
+      if (rows.length) {
+        Project.loadAll(rows);
+        viewF();
+
+      } else {
+        $.getJSON('data/projectdata.json', function(rawData) {
+          rawData.forEach(function(item) {
+            var proj = new Project(item);
+            proj.insertRecord();
+          });
+          webDB.execute('SELECT * FROM projects ORDER BY publishedOn DESC', function(rows) {
+            Project.loadAll(rows);
             viewF();
-          } else {
-            Project.loadAll(JSON.parse(localStorage.getItem('projectData')));
-            viewF();
-          }
-        }
-      });
-    } else {
-      Project.getAll();
-      viewF();
-    }
+          });
+        });
+      }
+    });
   };
 
   Project.getAll = function() {
-    $.getJSON('data/projectdata.json', function(data){
-      Project.loadAll(data);
-      localStorage.setItem('projectData', JSON.stringify(Project.all));
+    // $.getJSON('data/projectdata.json', function(data){
+    //   Project.loadAll(data);
+    //   localStorage.setItem('projectData', JSON.stringify(Project.all));
+    // });
+    $.getJSON('/data/projectdata.json', function(rawData) {
+      rawData.forEach(function(item) {
+        var proj = new Project(item);
+        proj.insertRecord();
+      });
+      webDB.execute('SELECT * FROM projects ORDER BY publishedOn DESC', function(rows) {
+        Project.loadAll(rows);
+      });
     });
   };
 
