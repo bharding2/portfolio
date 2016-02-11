@@ -27,3 +27,8 @@
 * Implemented data access using ajax and json, initialized local storage
 * Upon reload, check data against local storage.  If changed, use json and push new data to local storage.  If the same, use data from local storage.
 * Built new.html to create new project json from form inputs
+
+#### Week 2 day 2
+* Refactored to implement array methods
+* Created stat functionality
+* Added stats to footer of index.html
