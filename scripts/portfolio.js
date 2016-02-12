@@ -1,21 +1,15 @@
 (function(module) {
-
   function Project(newProj) {
-    this.title = newProj.title;
-    this.category = newProj.category;
-    this.repoUrl = newProj.repoUrl;
-    this.publishedOn = newProj.publishedOn;
-    this.body = newProj.body;
+    Object.keys(newProj).forEach(function(e, index, keys) {
+      this[e] = newProj[e];
+    },this);
   };
-
   Project.all = [];
 
   Project.prototype.toHtml = function() {
     var template = Handlebars.compile($('#project-template').text());
-
     this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
     this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
-
     return template(this);
   };
 
@@ -23,7 +17,6 @@
     projectData.sort(function(a, b) {
       return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
     });
-
     Project.all = projectData.map(function(ele) {
       return new Project(ele);
     });
@@ -39,8 +32,11 @@
           var eTag = xhr.getResponseHeader('eTag');
           if(!localStorage.eTag || eTag !== localStorage.eTag){
             localStorage.eTag = eTag;
-            Project.getAll();
-            viewF();
+            $.getJSON('data/projectdata.json', function(data){
+              Project.loadAll(data);
+              localStorage.setItem('projectData', JSON.stringify(Project.all));
+              viewF();
+            });
           } else {
             Project.loadAll(JSON.parse(localStorage.getItem('projectData')));
             viewF();
@@ -48,20 +44,16 @@
         }
       });
     } else {
-      Project.getAll();
-      viewF();
+      $.getJSON('data/projectdata.json', function(data){
+        Project.loadAll(data);
+        localStorage.setItem('projectData', JSON.stringify(Project.all));
+        viewF();
+      });
     }
   };
 
-  Project.getAll = function() {
-    $.getJSON('data/projectdata.json', function(data){
-      Project.loadAll(data);
-      localStorage.setItem('projectData', JSON.stringify(Project.all));
-    });
-  };
-
-  Project.numWordsAll = function() {
-    return Project.all.map(function(project) {
+  Project.numWords = function(arr) {
+    return arr.map(function(project) {
       return project.body.match(/\b\w+/g).length;
     })
     .reduce(function(a, b) {
@@ -85,27 +77,15 @@
     return Project.allCategories().map(function(cat) {
       return {
         category: cat,
-        numWords: Project.all.filter(function(project) {
+        numWords: Project.numWords(Project.all.filter(function(project) {
           return project.category === cat;
-        })
-        .map(function(project) {
-          return project.body.match(/\b\w+/g).length;
-        })
-        .reduce(function(a, b) {
-          return a + b;
-        }),
-        percentWords: parseInt((Project.all.filter(function(project) {
+        })),
+        percentWords: parseInt((Project.numWords(Project.all.filter(function(project) {
           return project.category === cat;
-        })
-        .map(function(project) {
-          return project.body.match(/\b\w+/g).length;
-        })
-        .reduce(function(a, b) {
-          return a + b;
-        }) / Project.numWordsAll() ) * 100)
+        })) / Project.numWords(Project.all)) * 100)
       };
     });
   };
 
   module.Project = Project;
-}(window));
+})(window);

@@ -1,5 +1,4 @@
 (function(module) {
-
   var portfolioView = {};
 
   portfolioView.handleNav = function () {
@@ -7,7 +6,6 @@
       $('.tab-content').hide();
       $('#' + $(this).data('content')).show();
     });
-
     $('nav .tab:first').click();
   };
 
@@ -64,12 +62,7 @@
       body: $('#project-body').val(),
       publishedOn: $('#project-published:checked').length ? new Date() : null
     });
-
     $('#projects').append(project.toHtml());
-
-    $('pre code').each(function(i, block) {
-      hljs.highlightBlock(block);
-    });
 
     $('#export-field').show();
     $('#project-json').val(JSON.stringify(project) + ',');
@@ -87,7 +80,6 @@
     Project.all.forEach(function (project) {
       $('#projects').append(project.toHtml());
     });
-
     portfolioView.handleNav();
     portfolioView.setTeasers();
     portfolioView.populateFilters();
@@ -96,4 +88,4 @@
   };
 
   module.portfolioView = portfolioView;
-}(window));
+})(window);

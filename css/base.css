@@ -12,19 +12,16 @@ body {
 }
 
 /*header stylings*/
-
 header {
   position: relative;
 }
 
 h1{
-  display: flex;
-  justify-content: center;
+  text-align: center;
   font-size: 3.157em;
 }
 
 /*footer styles*/
-
 footer {
   margin: 2%;
 }
