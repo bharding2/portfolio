@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="vendor/icons.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya:700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-
+<!-- Handlebars template for articles -->
     <script id="project-template" type="text/x-handlebars-template">
       <article data-category="{{category}}">
         <h2>{{title}}</h2>
@@ -23,11 +23,10 @@
         <a href="#" class="read-on">Read on &rarr;</a>
       </article>
     </script>
-
+<!-- Handlebars template for stats list items -->
     <script id="stats-template" type="text/x-handlebars-template">
       <li><strong>{{category}}</strong>: {{numWords}} words written.  {{percentWords}}% of total.</li>
     </script>
-
   </head>
   <body>
     <header>

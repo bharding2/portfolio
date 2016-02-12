@@ -1,7 +1,6 @@
 /*nav styles*/
-
 nav {
-  margin: 2% 0 2% 0;
+  margin: 1em 0 1em 0;
 }
 
 nav a {
@@ -36,13 +35,12 @@ nav li:hover{
 
 .icon-menu {
   position: absolute;
-  top: 1.777em;
-  left: 0.5%;
+  top: 2em;
+  left: .75em;
   font-size: 2em;
 }
 
 /*byline styles*/
-
 .byline {
   margin: 2%;
 }
@@ -52,7 +50,6 @@ nav li:hover{
 }
 
 /*media querys*/
-
 @media only screen and (min-width: 640px) {
   .icon-menu {
     display: none;
@@ -72,10 +69,5 @@ nav li:hover{
 
   nav a {
     font-size: 1.777em;
-  }
-
-  #projects select{
-    width: 90%;
-    margin: 0 5% 0 5%;
   }
 }

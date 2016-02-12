@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="vendor/icons.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya:700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-
+<!-- Handelbars template for article preview -->
     <script id="project-template" type="text/x-handlebars-template">
       <article data-category="{{category}}">
         <h2>{{title}}</h2>
@@ -28,23 +28,16 @@
     <section id="write" class="tab-content">
       <h1>New Article</h1>
       <form action="#" id="new-form">
-        <label>
-          <input type="text" id="project-title" placeholder="Project title" required>
-        </label>
+        <input type="text" id="project-title" placeholder="Project title" required>
         <textarea id="project-body" rows="8" cols="40" placeholder="Project body" required></textarea>
-        <label>
-          <input type="text" id="project-url" placeholder="Project URL" required>
-        </label>
-        <label>
-          <input type="text" id="project-category" placeholder="Category" required>
-        </label>
+        <input type="text" id="project-url" placeholder="Project URL" required>
+        <input type="text" id="project-category" placeholder="Category" required>
         <label>
           <input type="checkbox" id="project-published"> Published
         </label>
       </form>
     </section>
     <section id="projects" class="tab-content">
-
     </section>
     <section id="project-export">
       <label id="export-field" for="project-json">
@@ -57,8 +50,6 @@
     </footer>
     <script src="vendor/jquery-1.12.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-    <script src="vendor/marked.js"></script>
-    <script src="vendor/highlight.pack.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="scripts/portfolioview.js"></script>
     <script>

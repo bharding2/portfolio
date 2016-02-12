@@ -1,15 +1,14 @@
 #projects select{
-  width: 85%;
-  margin: 0.5% 5% 0 10%;
+  width: 75%;
+  margin: 0.2em 1.5em 0 4em;
   font-size: 1.333em;
 }
 
 article {
-  padding: 2%;
+  padding: 2% 5% 2% 5%;
 }
 
 /*text styles*/
-
 article h2 {
   font-size: 2.369em;
   margin: 2%;
@@ -31,7 +30,6 @@ article p {
 }
 
 /*list styles*/
-
 article ul {
   margin: 2%;
 }
@@ -41,25 +39,31 @@ article li {
   font-family: 'Alegrya', serif;
 }
 
-/*form styles*/
-
+/*form styles for new.html*/
 label {
   font-size: 1.333em;
 }
 
 label p {
   margin: 2%;
+  text-align: center;
+}
+
+#new-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
-  width: 50%;
-  margin: 2%;
+  width: 70%;
+  margin: 2% 0% 2% 0%;
   border: 1px solid #AEAED1;
 }
 
 textarea {
-  width: 50%;
-  margin: 2%;
+  width: 70%;
+  margin: 2% 0% 2% 0%;
   border: 1px solid #AEAED1;
 }
 
@@ -68,3 +72,16 @@ input[type="checkbox"] {
   height: .28em;
   font-size: 3em;
 }
+
+#project-export input {
+  width: 80%;
+  margin: 2% 10% 2% 10%;
+}
+
+/*media querys*/
+@media only screen and (min-width: 640px) {
+    #projects select{
+      width: 90%;
+      margin: 0 5% 0 5%;
+    }
+  }
