@@ -34,8 +34,8 @@
       <nav>
         <span class="icon-menu"></span>
         <ul>
-          <a class="tab" data-content="projects" href="#"><li class="icon-home">Projects</li></a>
-          <a class="tab" data-content="about" href="#"><li class="icon-rocket">About</li></a>
+          <a class="tab" data-content="projects" href="/"><li class="icon-home">Projects</li></a>
+          <a class="tab" data-content="about" href="/about"><li class="icon-rocket">About</li></a>
           <a href="https://github.com/bharding2" target="_blank"><li class="icon-github">GitHub</li></a>
           <a href="https://twitter.com/FcSlothbear" target="_blank"><li class="icon-twitter3">Twitter</li></a>
         </ul>
@@ -64,11 +64,12 @@
       </ul>
     </footer>
     <script src="vendor/jquery-1.12.0.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="vendor/handlebars.js"></script>
+    <script src="vendor/page.js"></script>
     <script src="scripts/portfolio.js"></script>
     <script src="scripts/portfolioview.js"></script>
-    <script type="text/javascript">
-      Project.fetchAll(portfolioView.initIndexPage);
-    </script>
+    <script src="scripts/projectcontroller.js"></script>
+    <script src="scripts/aboutcontroller.js"></script>
+    <script src="scripts/routes.js"></script>
   </body>
 </html>
