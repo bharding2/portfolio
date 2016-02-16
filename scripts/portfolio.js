@@ -28,7 +28,6 @@
         type: 'HEAD',
         url: 'data/projectdata.json',
         success: function(data, message, xhr){
-          console.log(xhr);
           var eTag = xhr.getResponseHeader('eTag');
           if(!localStorage.eTag || eTag !== localStorage.eTag){
             localStorage.eTag = eTag;
