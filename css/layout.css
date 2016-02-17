@@ -20,7 +20,6 @@ article h3 {
 }
 
 article a {
-  margin: 2%;
   color: #AEAED1;
 }
 
@@ -36,7 +35,6 @@ article ul {
 
 article li {
   margin: 0 2% 0 2%;
-  font-family: 'Alegreya', serif;
 }
 
 /*form styles for new.html*/
