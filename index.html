@@ -4,11 +4,11 @@
   <head>
     <title>Benjamin Harding</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="vendor/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/layout.css">
-    <link rel="stylesheet" type="text/css" href="css/module.css">
-    <link rel="stylesheet" href="vendor/icons.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/reset.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/layout.css">
+    <link rel="stylesheet" type="text/css" href="/css/module.css">
+    <link rel="stylesheet" href="/vendor/icons.css">
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
 <!-- Handlebars template for articles -->
@@ -20,7 +20,7 @@
           <p>{{publishStatus}}</p>
         </div>
         <section class="project-body">{{{body}}}</section>
-        <a href="#" class="read-on">Read on &rarr;</a>
+        <a href="/project/{{index}}" class="read-on">Read on &rarr;</a>
       </article>
     </script>
 <!-- Handlebars template for stats list items -->
@@ -42,10 +42,10 @@
       </nav>
     </header>
     <main>
-      <select id="category-filter">
-        <option value="">-- Filter by Categories --</option>
-      </select>
       <section id="projects" class="tab-content">
+        <select id="category-filter">
+          <option value="">-- Filter by Categories --</option>
+        </select>
       </section>
       <section id="about" class="tab-content">
         <h3>Some of my interests:</h3>
@@ -63,16 +63,16 @@
       <ul class="category-stats">
       </ul>
     </footer>
-    <script src="vendor/jquery-1.12.0.js"></script>
-    <script src="vendor/handlebars.js"></script>
-    <script src="vendor/page.js"></script>
-    <script src="scripts/githubToken.js"></script>
-    <script src="scripts/portfolio.js"></script>
-    <script src="scripts/portfolioview.js"></script>
-    <script src="scripts/repo.js"></script>
-    <script src="scripts/repoview.js"></script>
-    <script src="scripts/projectcontroller.js"></script>
-    <script src="scripts/aboutcontroller.js"></script>
-    <script src="scripts/routes.js"></script>
+    <script src="/vendor/jquery-1.12.0.js"></script>
+    <script src="/vendor/handlebars.js"></script>
+    <script src="/vendor/page.js"></script>
+    <script src="/scripts/githubToken.js"></script>
+    <script src="/scripts/portfolio.js"></script>
+    <script src="/scripts/portfolioview.js"></script>
+    <script src="/scripts/repo.js"></script>
+    <script src="/scripts/repoview.js"></script>
+    <script src="/scripts/projectcontroller.js"></script>
+    <script src="/scripts/aboutcontroller.js"></script>
+    <script src="/scripts/routes.js"></script>
   </body>
 </html>
