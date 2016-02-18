@@ -1,4 +1,4 @@
-#projects select{
+select{
   width: 75%;
   margin: 0.2em 1.5em 0 4em;
   font-size: 1.333em;
@@ -8,32 +8,12 @@ article {
   padding: 2% 5% 2% 5%;
 }
 
-/*text styles*/
-article h2 {
-  font-size: 2.369em;
-  margin: 2%;
-}
-
-article h3 {
-  font-size: 1.777em;
-  margin: 2%;
-}
-
-article a {
-  color: #AEAED1;
-}
-
-article p {
-  margin: 0 2% 0 2%;
-  font-family: 'Alegreya', serif;
-}
-
 /*list styles*/
-article ul {
+ul {
   margin: 2%;
 }
 
-article li {
+li {
   margin: 0 2% 0 2%;
 }
 

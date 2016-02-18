@@ -71,7 +71,7 @@
   portfolioView.initIndexPage = function() {
     $('#projects').empty();
     $('.category-stats').empty();
-    
+
     Project.all.forEach(function (project) {
       $('#projects').append(project.toHtml());
     });
