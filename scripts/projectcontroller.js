@@ -23,7 +23,7 @@
     };
 
     categoryData(Project.all.filter(function(project) {
-      return project.category === ctx.params.category;
+      return project.category === ctx.params.categoryName;
     }));
   };
 

@@ -14,12 +14,7 @@
 
   portfolioView.handleCategoryFilter = function() {
     $('#category-filter').on('change', function() {
-      if ($(this).val()) {
-        $('article').hide();
-        $('article[data-category="' + $(this).val() + '"]').fadeIn();
-      } else {
-        $('article').show();
-      }
+      page('/category/' + $(this).val().replace(/\W+/g, '+'));
     });
   };
 
