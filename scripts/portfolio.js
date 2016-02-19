@@ -10,6 +10,7 @@
     var template = Handlebars.compile($('#project-template').text());
     this.daysAgo = parseInt((new Date() - new Date(this.publishedOn))/60/60/24/1000);
     this.publishStatus = this.publishedOn ? 'published ' + this.daysAgo + ' days ago' : '(draft)';
+    this.index = Project.all.indexOf(this);
     return template(this);
   };
 

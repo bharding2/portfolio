@@ -6,6 +6,8 @@
   };
   //creates repo list on index.html about sections
   repoView.index = function() {
+    $('#about').show().siblings().hide();
+
     $('#repo-list').empty().append(
       repos.with('name').map(render)
     );
