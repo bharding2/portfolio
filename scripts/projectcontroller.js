@@ -11,9 +11,14 @@
       next();
     };
 
-    titleData(Project.all.filter(function(project) {
-      return project.index === parseInt(ctx.params.index);
-    }));
+    $.getJSON('../data/projectdata.json', function(data){
+      Project.loadAll(data);
+    })
+    .done(function() {
+      titleData(Project.all.filter(function(project, idx) {
+        return idx === parseInt(ctx.params.index);
+      }));
+    });
   };
 
   projectsController.loadByCategory = function(ctx, next) {
@@ -22,9 +27,14 @@
       next();
     };
 
-    categoryData(Project.all.filter(function(project) {
-      return project.category === ctx.params.categoryName;
-    }));
+    $.getJSON('../data/projectdata.json', function(data){
+      Project.loadAll(data);
+    })
+    .done(function() {
+      categoryData(Project.all.filter(function(project) {
+        return project.category === ctx.params.categoryName;
+      }));
+    });
   };
 
   projectsController.loadAll = function(ctx, next) {
