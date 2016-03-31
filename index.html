@@ -16,10 +16,15 @@
       <article data-category="{{category}}">
         <h2>{{title}}</h2>
         <div class="byline">
-          <address><a href="{{repoUrl}}">GitHub</a></address>
+          <address><a href="{{liveUrl}}" target="_blank">Live Site</a></address>
+          <address><a href="{{repoUrl}}">GitHub Repo</a></address>
           <p>{{publishStatus}}</p>
         </div>
-        <section class="project-body">{{{body}}}</section>
+
+        <section class="project-body">
+          <a href="{{liveUrl}}" target="_blank"><img src="{{previewUrl}}"></a>
+          {{{body}}}
+        </section>
         <a href="/project/{{index}}" class="read-on">Read on &rarr;</a>
       </article>
     </script>
@@ -30,14 +35,15 @@
   </head>
   <body>
     <header>
-      <h1>Portfolio</h1>
+      <h1>Benjamin Harding</h1>
       <nav>
         <span class="icon-menu"></span>
         <ul>
-          <a class="tab" data-content="projects" href="/"><li class="icon-home">Projects</li></a>
-          <a class="tab" data-content="about" href="/about"><li class="icon-rocket">About</li></a>
-          <a href="https://github.com/bharding2" target="_blank"><li class="icon-github">GitHub</li></a>
-          <a href="https://twitter.com/FcSlothbear" target="_blank"><li class="icon-twitter3">Twitter</li></a>
+          <li><a class="tab" data-content="projects" href="/"><span class="icon-home"></span>Projects</a></li>
+          <li><a class="tab" data-content="about" href="/about"><span class="icon-rocket"></span>About</a></li>
+          <li><a href="https://github.com/bharding2" target="_blank"><span class="icon-github"></span>GitHub</a></li>
+          <li><a href="https://twitter.com/FcSlothbear" target="_blank"><span class="icon-twitter3"></span>Twitter</a></li>
+          <li><a href="https://www.linkedin.com/in/benjamin-harding-00798265" target="_blank"><span class="icon-link"></span>LinkedIn</a></li>
         </ul>
       </nav>
     </header>
