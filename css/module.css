@@ -8,6 +8,7 @@ nav a {
   justify-content: flex-start;
   text-decoration: none;
   color: #D3DEE7;
+  padding: 2%;
 }
 
 nav ul {
@@ -24,16 +25,16 @@ nav:hover ul {
 
 nav li {
   display: inline;
-  padding: 2%;
   margin: 0;
-  font-size: 0.83em;
+  font-size: 1.777em;
+  padding: 2%;
 }
 
 nav li span {
   margin: 0 5% 0 0;
 }
 
-nav li:hover {
+nav a:hover {
   background-color: #4C9475;
 }
 
@@ -71,7 +72,11 @@ nav li:hover {
     padding: 0 7% 0 7%;
   }
 
-  nav a {
-    font-size: 1.777em;
+  nav li {
+    font-size: 1.45em;
+  }
+
+  nav li:hover {
+    background-color: #4C9475;
   }
 }
